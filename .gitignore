@@ -1,0 +1,7 @@
+/build/
+/target/
+/Vocabulario.iml
+/.settings
+/.idea
+.classpath
+.project
