@@ -5,16 +5,21 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.irm.vocabulario.domain.Card;
 
+@Repository("cardDao")
 public class CardsDaoImpl implements CardsDao {
 
     private JdbcTemplate jdbcTemplate;
     private CardRowMapper rowMapper;
 
-    public CardsDaoImpl(DataSource dataSource) {
+    @Autowired
+    public CardsDaoImpl(@Qualifier("dataSource") DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
         rowMapper = new CardRowMapper();
     }

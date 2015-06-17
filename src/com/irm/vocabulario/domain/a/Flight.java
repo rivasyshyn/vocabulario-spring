@@ -41,7 +41,7 @@ public class Flight {
     public long getTotalTravelTime() {
         Date start = getFirstLeg().getDepartOn();
         Date end = getLastLeg().getArriveOn();
-        Assert.isTrue(end.compareTo(start) > 0, "Start date must be before end date");
+        //Assert.isTrue(end.compareTo(start) > 0, "Start date must be before end date");
         return (end.getTime() - start.getTime());
     }
 

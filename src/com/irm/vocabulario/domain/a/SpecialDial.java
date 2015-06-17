@@ -22,7 +22,7 @@ public class SpecialDial {
         this.endOn = endOn;
     }
 
-    public Airport getAriveAt() {
+    public Airport getArriveAt() {
         return ariveAt;
     }
 

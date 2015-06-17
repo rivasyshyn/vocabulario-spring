@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="flightService" class="com.irm.vocabulario.servives.FlightServiceMocImpl">
+    <bean id="flightService" class="com.irm.vocabulario.services.FlightServiceMocImpl">
     </bean>
 
 </beans>

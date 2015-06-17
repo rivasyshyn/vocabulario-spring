@@ -1,5 +1,6 @@
 package com.irm.vocabulario.domain;
 
+import javax.annotation.ManagedBean;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;

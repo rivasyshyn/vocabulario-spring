@@ -8,16 +8,17 @@
 <title>Flight Booking Service</title>
 </head>
 <body>
-	<h1>Welcome to the Flight Booking Service</h1>
+	<h4>Welcome to the Flight Booking Service</h4>
 	<p>We have the following specials now:</p>
 	<ul>
 		<c:forEach items="${specials}" var="special">
-			<li>${special.departFrom.name}- ${special.arriveAt.name} from
-				$${special.cost}</li>
+			<li>depart :: ${special.departFrom.name}<br />
+				arrive :: ${special.arriveAt.name}<br />from :: $${special.cost}
+			</li>
 		</c:forEach>
 	</ul>
 	<p>
-		<a href="search">Search for a flight.</a>
+		<a href="/Vocabulario/flights/search/form">Search for a flight.</a>
 	</p>
 </body>
 </body>

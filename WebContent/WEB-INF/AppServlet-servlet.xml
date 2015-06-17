@@ -13,8 +13,8 @@
 
 	<context:component-scan base-package="com.irm.vocabulario"></context:component-scan>
 	<mvc:annotation-driven />
-	<import resource="dao-context.xml" />
-	<import resource="service-context.xml" />
+<!-- 	<import resource="dao-context.xml" />
+	<import resource="service-context.xml" /> -->
 
 	<bean id="viewResorver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

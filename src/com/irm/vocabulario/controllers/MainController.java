@@ -1,6 +1,5 @@
 package com.irm.vocabulario.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
