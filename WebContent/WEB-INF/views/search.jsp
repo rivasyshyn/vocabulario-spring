@@ -10,7 +10,7 @@
 <body>
 	<h3>Search For Flights</h3>
 	<spring:nestedPath path="searchCriteria">
-		<form action="/Vocabulario/flights/search" method="post">
+		<form action="${spring:mvcUrl('FC#doSearch').build()}" method="post">
 			<table>
 				<tr>
 					<td>Depart From:</td>
@@ -41,10 +41,11 @@
 					<td />
 					<td />
 				</tr>
-				</tr>
 
 			</table>
 		</form>
 	</spring:nestedPath>
+	
+	<a href="${spring:mvcUrl('MC#index').build()}">Index</a>
 </body>
 </html>

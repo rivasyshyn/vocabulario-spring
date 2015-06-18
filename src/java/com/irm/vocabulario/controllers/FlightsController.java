@@ -1,6 +1,5 @@
 package com.irm.vocabulario.controllers;
 
-import java.lang.annotation.Native;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -8,8 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,12 +21,12 @@ import com.irm.vocabulario.domain.a.SpecialDial;
 import com.irm.vocabulario.services.FlightService;
 
 @Controller
-@RequestMapping("/flights/**")
+@RequestMapping("/flights")
 public class FlightsController {
 
     private FlightService flightService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String specialDials(Model model) {
         List<SpecialDial> specialDials = flightService.getSpecialDeals();
         model.addAttribute("specials", specialDials);

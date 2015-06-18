@@ -13,14 +13,23 @@
 
 	<context:component-scan base-package="com.irm.vocabulario"></context:component-scan>
 	<mvc:annotation-driven />
-<!-- 	<import resource="dao-context.xml" />
-	<import resource="service-context.xml" /> -->
+	<mvc:resources location="/resources/**" mapping="/resources/"></mvc:resources>
 
-	<bean id="viewResorver"
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+
+<!-- 	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+	</bean> -->
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
