@@ -31,7 +31,7 @@
 </style>
 </head>
 <body>
-    locale: ${locale}
+	locale: ${locale}
 	<form:form method="POST" action="${s:mvcUrl('MC#addCard').build()}"
 		modelAttribute="newCard">
 		<table>
@@ -68,7 +68,8 @@
 	</c:if>
 
 	<!-- <div class="add_button">+</div> -->
-	<a href="${s:mvcUrl('FC#specialDials').build()}"><s:message code="label.flights"/></a>
+	<a href="${s:mvcUrl('FC#specialDials').build()}"><s:message
+			code="label.flights" /></a>
 
 </body>
 </html>

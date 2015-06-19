@@ -5,7 +5,6 @@ import java.util.Locale;
 
 import javax.validation.Valid;
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,23 +16,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.irm.vocabulario.dao.CardsDao;
 import com.irm.vocabulario.domain.Card;
+import com.irm.vocabulario.services.CardService;
 
 @Controller
 public class MainController {
 
-    private CardsDao cardDao;
+    private CardService cardService;
 
     @Autowired
-    @Qualifier("cardDao")
-    public void setCardDao(CardsDao cardDao) {
-        this.cardDao = cardDao;
+    @Qualifier("cardService")
+    public void setCardService(CardService cardService) {
+        this.cardService = cardService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String index(Model model, Locale locale) {
-        List<Card> cards = cardDao.getAll();
+        List<Card> cards = cardService.getCards();
         model.addAttribute("cards", cards);
         model.addAttribute("newCard", new Card());
         model.addAttribute(locale);
@@ -45,13 +44,13 @@ public class MainController {
             ModelMap model, Locale locale) {
         if (!result.hasErrors()) {
             if (card.getId() != null) {
-                cardDao.update(card);
+                cardService.updateCard(card);
             } else {
-                cardDao.add(card);
+                cardService.addCard(card);
             }
             return index((Model) model, locale);
         } else {
-            List<Card> cards = cardDao.getAll();
+            List<Card> cards = cardService.getCards();
             model.addAttribute("cards", cards);
             return "index";
         }
@@ -61,13 +60,13 @@ public class MainController {
     public String delete(@PathVariable("id") Integer id, Model model, Locale locale) {
         Card card = new Card();
         card.setId(id);
-        cardDao.delete(card);
+        cardService.deleteCard(card.getId());
         return index(model, locale);
     }
 
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable("id") Integer id, Model model) {
-        List<Card> cards = cardDao.getAll();
+        List<Card> cards = cardService.getCards();
         Card card = new Card();
         for (Card c : cards) {
             if (c.getId() == id)

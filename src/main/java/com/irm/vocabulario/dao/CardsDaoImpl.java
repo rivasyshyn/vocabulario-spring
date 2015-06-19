@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.irm.vocabulario.domain.Card;
+import com.irm.vocabulario.domain.CardSearchOptions;
 
 @Repository("cardDao")
 public class CardsDaoImpl implements CardsDao {
@@ -38,8 +39,8 @@ public class CardsDaoImpl implements CardsDao {
     }
 
     @Override
-    public void delete(Card card) {
-        jdbcTemplate.update("DELETE FROM cards WHERE cards.id=?", card.getId());
+    public void delete(Integer id) {
+        jdbcTemplate.update("DELETE FROM cards WHERE cards.id=?", id);
     }
 
     @Override
@@ -49,12 +50,12 @@ public class CardsDaoImpl implements CardsDao {
     }
 
     @Override
-    public List<Card> search(String query, SearchOptions options) {
+    public List<Card> search(String query, CardSearchOptions options) {
         List<Card> cards_w = null;
-        if (options == SearchOptions.WORD || options == SearchOptions.ALL)
+        if (options == CardSearchOptions.WORD || options == CardSearchOptions.ALL)
             cards_w = jdbcTemplate.query("search_word(?)", new String[] { query }, rowMapper);
         List<Card> cards_t = null;
-        if (options == SearchOptions.TRANSLATION || options == SearchOptions.ALL)
+        if (options == CardSearchOptions.TRANSLATION || options == CardSearchOptions.ALL)
             cards_t = jdbcTemplate
                     .query("search_translation(?)", new String[] { query }, rowMapper);
 

@@ -27,9 +27,17 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
-<!-- 	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
-	</bean> -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+	</bean>
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="locale"></property>
+		</bean>
+
+	</mvc:interceptors>
+
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
